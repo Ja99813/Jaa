@@ -1,0 +1,54 @@
+系统里已经事先准备好了一张软件图标放在与项目地址相同的文件夹内，但理论上讲需要为此图标提供几种不同的分辨率版本，然后分别放入到对应分辨率的 mipmap 目录下。这里为简单起见只使用一张图片。
+
+首先在 Project 目录模式下将 logo.png 复制到 CoolWeather/app/src/main/res/ 目录下的每个以 mipmap 开头的文件夹中（除 mipmap-anydpi-v26）。
+
+
+
+图1 目标文件夹
+然后切换到 Android 目录模式，修改 AndroidManifest.xml 中的代码：
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.coolweather.android">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        android:name="org.litepal.LitePalApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        ...
+    </application>
+</manifest>
+以上代码将<application>标签的android:icon和android:roundIcon属性都指定成了 mipmap 目录下的 logo 。
+
+接下来修改程序的名称，打开 res/values/string.xml 文件，将其中的 app_name 修改为我们想要的应用名，比如：
+
+<resources>
+    <string name="app_name">MyCoolWeather</string>
+</resources>
+最后还需要将系统默认的图标删掉，也就是删除 res/mipmap/ 目录下的 ic_luncher 和 ic_luncher_round 目录及其所有子文件，右击 → Delete 即可：
+
+
+
+图2 删除目录
+现在重新运行程序，在 home 界面向上滑动：
+
+
+
+图3 向上滑动打开应用目录
+可以看到项目应用的图标以及名称都已经改变了：
+
+
+
+图4 修改后的应用
+编程要求
+根据相关知识介绍，在右侧云平台进行实际操作，完成应用图标以及名称的修改。
+
+测试说明
+平台会对你的操作进行自动评测，符合要求即通过。
+
+开始你的任务吧，祝你成功！
